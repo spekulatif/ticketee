@@ -1,6 +1,15 @@
 class ProjectsController < ApplicationController
+before_action :authorize_admin!, except: [:index, :show]
 before_action :set_project, only: [:show, :edit, :update, :destroy]
-  
+
+  def set_project
+    @project = Project.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "The project you were looking" +
+                      " for could not be found."
+      redirect_to projects_path
+  end
+
   def index
     @projects = Project.all
   end
@@ -47,6 +56,28 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
   end
   
   private
+
+  def require_signin!
+    if current_user.nil?
+      flash[:error] =
+      "You need to sign in or sign up before continuing."
+      redirect_to signin_url
+    end
+  end
+  helper_method :require_signin!
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
+  def authorize_admin!
+    require_signin!
+    unless current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to root_path
+    end 
+  end
     
   def project_params
     params.require(:project).permit(:name, :description)
