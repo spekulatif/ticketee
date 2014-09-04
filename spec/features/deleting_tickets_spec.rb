@@ -1,5 +1,3 @@
-
-
 require 'spec_helper'
 
 feature 'Deleting tickets' do
@@ -9,6 +7,7 @@ feature 'Deleting tickets' do
     FactoryGirl.create(:ticket, project: project, user: user) }
 
   before do
+    define_permission!(user, "view", project)
     sign_in_as!(user)
 
     visit '/'

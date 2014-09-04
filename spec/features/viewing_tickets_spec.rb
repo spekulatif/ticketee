@@ -4,6 +4,7 @@ feature "Viewing tickets" do
     textmate_2 = FactoryGirl.create(:project,
                                     name: "TextMate 2")
     user = FactoryGirl.create(:user)
+    define_permission!(user, "view", textmate_2)
     ticket = FactoryGirl.create(:ticket,
             project: textmate_2,
             title: "Make it shiny!",
@@ -12,12 +13,13 @@ feature "Viewing tickets" do
 
     internet_explorer = FactoryGirl.create(:project,
                                            name: "Internet Explorer")
+    define_permission!(user, "view", internet_explorer)
     FactoryGirl.create(:ticket,
             project: internet_explorer,
             title: "Standards compliance",
             description: "Isn't a joke.")
-  
-     visit '/' 
+    sign_in_as!(user)
+    visit '/' 
   end
   
   scenario "Viewing tickets for a given project" do
