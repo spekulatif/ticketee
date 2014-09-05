@@ -12,7 +12,7 @@ feature "Profile page" do
 end
 
 feature "Editing Users" do
-  scenario "Updating a project" do
+  scenario "Updating a user" do
     user = FactoryGirl.create(:user)
 
     visit user_path(user)
@@ -21,6 +21,6 @@ feature "Editing Users" do
     fill_in "Username", with: "new_username"
     click_button "Update Profile"
 
-    expect(page).to have_content("Profile has been updated.")
+    expect(page).to have_content("User has been updated.")
   end
 end

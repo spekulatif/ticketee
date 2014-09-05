@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 	  if current_user.nil?
 	    flash[:error] =
 	    "You need to sign in or sign up before continuing."
-	    redirect_to signin_url
+	    redirect_to signin_path
 	  end
 	end
   helper_method :require_signin!

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <nav> <ul>
     <% if current_user %>
-      Signed in as <%= current_user.email %>
-      <% admins_only do %>
-        <%= link_to "Admin", admin_root_path %>
-      <% end %>
+        Signed in as <%= link_to current_user.name, [current_user] %>
+        <%= link_to "Sign out", signout_path, method: :delete %>
+        <% admins_only do %>
+          <%= link_to "Admin", admin_root_path %>
+         <% end %>
     <% else %>
       <li><%= link_to "Sign up", new_user_path %></li>
       <li><%= link_to "Sign in", signin_path %></li>
@@ -34,38 +35,3 @@
 <%= yield %>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>
-	  <% if current_user %>
-      Signed in as <%= current_user.email %>
-     <% admins_only do %>
-        <%= link_to "Admin", admin_root_path %>
-      <% end %>
-      <% if content_for?(:title) %>
-	     <%= yield(:title) %>
-	     <% else %>
-	    Ticketee
-	  <% end %>
-	</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= yield %>
-<% flash.each do |key, value| %>
-  <div class='flash' id='<%= key %>'>
-    <%= value %>
-  </div>
-<% end %>
-<nav>
-  <%= link_to "Sign up", new_user_path %>
-</nav>
-</body>
-</html>
-<% end %>
-
- -->

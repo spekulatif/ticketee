@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -28,11 +28,17 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
 
 gem 'pg'
 
-gem 'sprockets'
+gem 'cancan', '~> 1.6.10'
+
+gem 'carrierwave', '~> 0.9.0'
+
+gem 'bcrypt-ruby', '~> 3.0.1'
+
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -40,18 +46,17 @@ group :doc do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', "~> 2.14"
   gem 'pry'
 end
 
 group :test do
-  gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'capybara', "2.1.0"
+  gem 'factory_girl_rails', '~> 4.2.1'
 end
 
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
