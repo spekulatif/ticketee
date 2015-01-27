@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 201409091224185) do
+ActiveRecord::Schema.define(version: 201509091224185) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 201409091224185) do
     t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_type"
   end
 
   create_table "permissions", force: true do |t|
@@ -47,7 +46,6 @@ ActiveRecord::Schema.define(version: 201409091224185) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "asset"
   end
 
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id", using: :btree

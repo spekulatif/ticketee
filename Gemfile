@@ -47,7 +47,6 @@ end
 
 group :test, :development do
   gem 'rspec-rails', "~> 2.14"
-  gem 'pry'
 end
 
 group :test do
