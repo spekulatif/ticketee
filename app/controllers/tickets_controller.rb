@@ -43,6 +43,10 @@ class TicketsController < ApplicationController
     redirect_to @project
   end
 
+  def show
+    @comment = @ticket.comments.build
+  end
+
   def edit
   end
 
