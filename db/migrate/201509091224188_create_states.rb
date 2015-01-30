@@ -8,6 +8,6 @@ class CreateStates < ActiveRecord::Migration
     end
 
     add_column :tickets, :state_id, :integer, index: true
- 	add_column :comments, :state_id, :integer
+ 		add_column :comments, :state_id, :integer
   end
 end
